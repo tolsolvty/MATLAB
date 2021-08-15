@@ -20,7 +20,7 @@ for file = listing(~[listing.isdir])'
         numerical_g = zeros([n, 1]);
         for j = 1 : n
             
-            h = max(1, abs(x(j))) * EPS;
+            h = EPS * max(1, abs(x(j)));
             step = h * double((1 : n)' == j);
             
             x_plus_step = x + step;
