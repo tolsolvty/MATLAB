@@ -13,4 +13,4 @@ weight = ones([m, 1]);
 x = Ac \ bc;
 
 %%
-calcfg(x, infA, supA, Ac, Ar, bc, br, weight);
+calcfg(x, n, infA, supA, Ac, Ar, bc, br, weight);
