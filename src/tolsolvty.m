@@ -216,13 +216,13 @@ function [f,g,tt] = calcfg(x)
     isxnegative = x < 0; 
     if -infs(mc) <= sups(mc) 
         ds = zeros(n,1); 
-        ds(isxnonnegative,1) = infA(mc,isxnonnegative); 
-        ds(isxnegative,1) = supA(mc,isxnegative); 
+        ds(isxnonnegative) = infA(mc,isxnonnegative); 
+        ds(isxnegative) = supA(mc,isxnegative); 
         g = weight(mc) * ds; 
     else 
         dl = zeros(n,1); 
-        dl(isxnonnegative,1) = supA(mc,isxnonnegative); 
-        dl(isxnegative,1) = infA(mc,isxnegative); 
+        dl(isxnonnegative) = supA(mc,isxnonnegative); 
+        dl(isxnegative) = infA(mc,isxnegative); 
         g = -weight(mc) * dl; 
     end 
 end 
@@ -285,7 +285,7 @@ end
 %       cal - количество вычислений функционала на текущем шаге 
 %     ncals - общее количество вычислений целевого функционала
 %  
-for itn = 1:maxitn;
+for itn = 1:maxitn
     vf(nsims) = ff;
     %   критерий останова по норме суперградиента
     if  norm(g0) < epsg
@@ -366,7 +366,7 @@ argmax = xx;
   
 %   сортируем образующие распознающего функционала по возрастанию 
 tt = [(1:m)', tt];
-[z,ind] = sort(tt(:,2));
+[~,ind] = sort(tt(:,2));
 envs = tt(ind,:);
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
