@@ -28,7 +28,8 @@ for file = listing(~[listing.isdir])'
         for j = 1 : n
             
             h = EPS * max(1, abs(x(j)));
-            step = h * ((1 : n)' == j);
+            e = double((1 : n)' == j);
+            step = h * e;
             
             x_plus_step = x + step;
             f_x_plus_step = calcfg(x_plus_step, n, infA, supA, Ac, Ar, bc, br, weight);
