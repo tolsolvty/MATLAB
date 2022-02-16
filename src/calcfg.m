@@ -9,8 +9,10 @@ function [f,g,tt] = calcfg(x,n,infA,supA,Ac,Ar,bc,br,weight)
     %   на точечный вектор, через середину и радиус 
     Axc = Ac * x;
     Axr = Ar * abs(x);
-    infs = bc - (Axc + Axr);
-    sups = bc - (Axc - Axr);
+    Axi = Axc - Axr;
+    Axs = Axc + Axr;
+    infs = bc - Axs;
+    sups = bc - Axi;
     mags = max(-infs, sups);
     tt = weight .* (br - mags);
   
