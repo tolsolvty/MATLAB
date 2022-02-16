@@ -205,7 +205,8 @@ function [f,g,tt] = calcfg(x)
     Axr = Ar * abs(x);
     infs = bc - (Axc + Axr);
     sups = bc - (Axc - Axr);
-    tt = weight .* (br - max(abs(infs), abs(sups)));
+    mags = max(-infs, sups);
+    tt = weight .* (br - mags);
   
     %   сборка значения всего распознающего функционала 
     [f, mc] = min(tt);
