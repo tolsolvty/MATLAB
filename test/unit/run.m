@@ -2,4 +2,5 @@
 
 T = table(results);
 T.Row = T.Name;
-disp(T(:, {'Passed', 'Duration'}));
+T = T(:, {'Passed', 'Duration'});
+disp(T);
